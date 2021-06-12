@@ -1,0 +1,81 @@
+Dema@DESKTOP-K50V1A4 MINGW64 ~/OneDrive/Desktop/programming/Python/python_stack/
+$ pip list
+Package    Version
+---------- -------
+pip        21.1.1
+setuptools 56.0.0
+(py3Env)
+
+
+Dema@DESKTOP-K50V1A4 MINGW64 ~/OneDrive/Desktop/programming/Python/python_stack/my_environments
+$ deactivate
+
+
+Dema@DESKTOP-K50V1A4 MINGW64 ~/OneDrive/Desktop/programming/Python/python_stack/my_environments
+$ pip3 list
+Package    Version
+---------- -------
+asgiref    3.3.4
+Django     3.2.1
+pip        21.1.1
+pytz       2021.1
+setuptools 56.0.0
+sqlparse   0.4.1
+
+
+
+Dema@DESKTOP-K50V1A4 MINGW64 ~/OneDrive/Desktop/programming/Python/python_stack/my_environments
+$ source py3Env/Scripts/activate
+(py3Env)
+
+
+
+Dema@DESKTOP-K50V1A4 MINGW64 ~/OneDrive/Desktop/programming/Python/python_stack/my_environments
+$ pip install Django==2.2.4
+Collecting Django==2.2.4
+  Downloading Django-2.2.4-py3-none-any.whl (7.5 MB)
+
+
+Dema@DESKTOP-K50V1A4 MINGW64 ~/OneDrive/Desktop/programming/Python/python_stack/my_environments
+$ pip freeze
+(py3Env)
+
+
+Dema@DESKTOP-K50V1A4 MINGW64 ~/OneDrive/Desktop
+$ pip freeze > requirments.txt
+
+
+Dema@DESKTOP-K50V1A4 MINGW64 ~/OneDrive/Desktop/programming/Python/python_stack/my_environments
+$ pip uninstall Django
+Found existing installation: Django 3.2.1
+Uninstalling Django-3.2.1:
+  Would remove:
+    c:\users\dema\onedrive\desktop\programming\python\python_stack\my_environments\py3env\lib\site-packages\django-3.2.1.dist-info\*
+    c:\users\dema\onedrive\desktop\programming\python\python_stack\my_environments\py3env\lib\site-packages\django\*
+    c:\users\dema\onedrive\desktop\programming\python\python_stack\my_environments\py3env\scripts\django-admin.exe
+    c:\users\dema\onedrive\desktop\programming\python\python_stack\my_environments\py3env\scripts\django-admin.py
+Proceed (y/n)?y
+  Successfully uninstalled Django-3.2.1
+(py3Env)
+
+
+
+
+Dema@DESKTOP-K50V1A4 MINGW64 ~/OneDrive/Desktop/programming/Python/python_stack/my_environments
+$ pip show Django
+Name: Django
+Version: 3.2.1
+Summary: A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
+Home-page: https://www.djangoproject.com/
+Author: Django Software Foundation
+Author-email: foundation@djangoproject.com
+License: BSD-3-Clause
+Location: c:\users\dema\onedrive\desktop\programming\python\python_stack\my_environments\py3env\lib\site-packages
+Requires: sqlparse, asgiref, pytz
+Required-by:
+(py3Env)
+
+
+
+
+
