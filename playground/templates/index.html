@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Document</title>
+<style>
+  .color1{
+    background-color: {{color_row}};
+}
+.color2{
+    background-color: {{color_col}};
+}
+</style>
+</head>
+<body>
+  <table>
+{% for i in range(num_row) %}
+  <tr>
+    {% for j in range(num_col) %}
+
+      <td class="color{{(j+i)%2+1}}"></td>
+    {% endfor %}
+
+  </tr>
+{% endfor %}
+</table>
+</body>
+</html>
