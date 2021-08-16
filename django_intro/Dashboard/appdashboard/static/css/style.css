@@ -1,0 +1,62 @@
+
+   #welcome{
+    font-size: 20px;
+    float: right;
+    margin-right: 50px;
+ }
+
+ 
+    #poatmessage{
+        margin-left:100px;
+    }
+
+#login, #reg{
+    float:left;
+    margin-right: 100px;   
+    }
+   
+    #post_a_thought{
+        background-color: rgb(42, 83, 172);
+        color: white;
+        height: 30px;
+        width: 120px;
+        margin-left: 10px;
+    }
+        
+   #addthought{
+       display: flex;  
+   } 
+
+   #linkes{
+float: right; 
+word-spacing: 10px;
+margin: 30px;
+font-size: 20px;
+  }
+   .textarea{
+       margin-left: 20px;
+    }
+    #details{
+        margin-left: 100px;
+    }
+    #delete_a_comment{
+        margin-left: 100px;
+    }
+
+#like{
+    margin-left: 100px;
+}
+#unlike{
+margin-left: 10px;
+}    
+
+#likeunlike{
+    display: flex;
+}   
+
+th,td{
+    border: 1px solid black;
+    width: 300px;
+
+}
+tr:nth-child(even){background-color: #f2f2f2;}

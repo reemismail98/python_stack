@@ -1,0 +1,43 @@
+header{
+        border-bottom: 1px solid black;   
+        height: 100px;
+        }
+        h1{
+            float: left;
+        }
+        #welcome{
+        display: flex;
+        float: right;
+        margin-right: 50px;
+        }
+        a{
+            margin-top: 17px;
+            margin-left: 20px;
+        }
+        #poatmessage{
+            margin-left:100px;
+        }
+    input{
+        float: right;
+        /* margin-right: 180px; */
+    }
+    #login, #reg{
+        float:left;
+        margin-right: 100px;   
+        }
+    p{
+    margin-left: 20px;
+    }    
+    #post_a_message{
+        background-color: rgb(42, 83, 172);
+        color: white;
+        float:left
+    }
+    #post_a_comment{
+        background-color: rgb(28, 173, 65);
+        color: white;
+        float:left
+    }
+    #user_comment {
+        padding-left: 30px;
+    }  

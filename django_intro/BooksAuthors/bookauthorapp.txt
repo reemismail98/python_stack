@@ -1,0 +1,140 @@
+ Create 5 books with the following names: C Sharp, Java, Python, PHP, Ruby
+>>> Book.objects.create(title="C Sharp", desc="book C Sharp")
+<Book: Book object (1)>
+>>> Book.objects.create(title="Java", desc="book Java")
+<Book: Book object (2)>
+>>> Book.objects.create(title="Python", desc="book Python")
+<Book: Book object (3)>
+>>> Book.objects.create(title="PHP", desc="book PHP")
+<Book: Book object (4)>
+>>> Book.objects.create(title="Ruby", desc="book Ruby")
+<Book: Book object (5)>
+
+Create 5 different authors: Jane Austen, Emily Dickinson, Fyodor Dostoevsky, William Shakespeare, Lau Tzu
+>>> Author.objects.create(first_name="Jane",last_name="Austen")
+<Author: Author object (1)>
+>>> Author.objects.create(first_name="Emily",last_name="Dostoevsky")
+<Author: Author object (2)>
+>>> Author.objects.create(first_name="Fyodor",last_name="Dickinson")
+<Author: Author object (3)>
+>>> Author.objects.create(first_name="William",last_name="Shakespeare")
+<Author: Author object (4)>
+>>> Author.objects.create(first_name="Lau",last_name="Tzu")
+<Author: Author object (5)>
+
+Add a new text field in the authors table called 'notes'.
+notes=models.TextField()
+
+Create and run the migration files to update the table in your database
+(djangoPy3Env) C:\Users\Dema\OneDrive\Desktop\programming\Python\Django\my_environments\django_intro\BooksAuthors>python manage.py makemigrations
+You are trying to add a non-nullable field 'notes' to author without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> ""
+Migrations for 'bookauthorapp':
+  bookauthorapp\migrations\0002_author_notes.py
+    - Add field notes to author
+
+(djangoPy3Env) C:\Users\Dema\OneDrive\Desktop\programming\Python\Django\my_environments\django_intro\BooksAuthors>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, bookauthorapp, contenttypes, sessions
+Running migrations:
+  Applying bookauthorapp.0002_author_notes... OK
+
+(djangoPy3Env) C:\Users\Dema\OneDrive\Desktop\programming\Python\Django\my_environments\django_intro\BooksAuthors>python manage.py shell
+Python 3.9.5 (tags/v3.9.5:0a7dcbd, May  3 2021, 17:27:52) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from bookaythorapp.models import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ModuleNotFoundError: No module named 'bookaythorapp'
+>>> from bookauthorapp.models import *
+
+Change the name of the C Sharp book to C#
+>>> x=Book.objects.get(id=1)
+>>> x.title="C#"
+>>> x.save()
+
+Change the first name of the 4th author to Bill
+>>> x=Author.objects.get(id=4)
+>>> x.first_name="Bill"
+>>> x.save()
+
+Assign the first author to the first 2 books
+>>> a=Author.objects.get(id=6)
+>>> b=Book.objects.get(id=1)
+>>> a.books.add(b)
+>>> bb=Book.objects.get(id=2)
+>>> a.books.add(bb)
+>>> a.books.all()
+<QuerySet [<Book: Book object (1)>, <Book: Book object (2)>]>
+
+Assign the second author to the first 3 books
+>>> a=Author.objects.get(id=7)
+>>> b=Book.objects.get(id=1)
+>>> a.books.add(b)
+>>> bb=Book.objects.get(id=2)
+>>> a.books.add(bb)
+>>> bbb=Book.objects.get(id=3)
+>>> a.books.add(bbb)
+>>> a.books.all()
+<QuerySet [<Book: Book object (1)>, <Book: Book object (2)>, <Book: Book object (3)>]>
+
+Assign the third author to the first 4 books
+>>> a=Author.objects.get(id=8)
+>>> b=Book.objects.get(id=1)
+>>> a.books.add(b)
+>>> bb=Book.objects.get(id=2)
+>>> a.books.add(bb)
+>>> bbb=Book.objects.get(id=3)
+>>> a.books.add(bbb)
+>>> bbbb=Book.objects.get(id=4)
+>>> a.books.add(bbbb)
+>>> a.books.all()
+<QuerySet [<Book: Book object (1)>, <Book: Book object (2)>, <Book: Book object (3)>, <Book: Book object (4)>]>
+
+Assign the fourth author to the first 5 books (or in other words, all the books)
+>>> a=Author.objects.get(id=9)
+>>> a.books.add(b)
+>>> a.books.add(bb)
+>>> a.books.add(bbb)
+>>> a.books.add(bbbb)
+>>> blast=Book.objects.get(id=5)
+>>> a.books.add(blast)
+>>> a.books.all()
+<QuerySet [<Book: Book object (1)>, <Book: Book object (2)>, <Book: Book object (3)>, <Book: Book object (4)>, <Book: Book object (5)>]>
+
+Retrieve all the authors for the 3rd book
+>>> this_book = Book.objects.get(id=3)
+>>> this_book.publishers.all()
+<QuerySet [<Author: Author object (7)>, <Author: Author object (8)>, <Author: Author object (9)>]>
+
+Remove the first author of the 3rd book
+>>> a=Author.objects.first()
+>>> b=Book.objects.get(id=3)
+>>> b.publishers.remove(a)
+>>> b.publishers.all()
+<QuerySet [<Author: Author object (7)>, <Author: Author object (8)>, <Author: Author object (9)>]>
+
+Add the 5th author as one of the authors of the 2nd book
+>>> a=Author.objects.get(id=10)
+>>> b=Book.objects.get(id=2)
+>>> a.books.add(b)
+>>> a.books.all()
+<QuerySet [<Book: Book object (2)>]>
+
+Find all the books that the 3rd author is part of
+>>> a=Author.objects.get(id=8)
+>>> a.books.all()
+<QuerySet [<Book: Book object (1)>, <Book: Book object (2)>, <Book: Book object (3)>, <Book: Book object (4)>]>
+
+Find all the authors that contributed to the 5th book
+>>> b=Book.objects.get(id=5)
+>>> b.publishers.all()
+<QuerySet [<Author: Author object (9)>]>

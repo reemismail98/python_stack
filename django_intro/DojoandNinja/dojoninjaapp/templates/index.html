@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojos & Ninjas With Templates</title>
+    <style>
+      
+form{
+    display: inline-block;
+    margin: 50px;
+}
+    </style>
+</head>
+<body>
+    <form action="/dojoform" method="post">
+        {% csrf_token %}
+        <h1>Add a Dojo</h1>
+        <p>Name:</p>
+        <input type="text" name="name"><br>
+        <p>City:</p>
+        <input type="text" name="city"><br>
+        <p>State:</p>
+        <input type="text" name="state"><br><br>
+        <input type="submit" value="Add">
+    </form>
+    <form action="/ninjaform" method="post">
+        {% csrf_token %}
+        <h1>Add a Ninja</h1>
+        <p>First Name:</p>
+        <input type="text" name="fname"><br>
+        <p>Last name:</p>
+        <input type="text"  name="lname"><br>
+        <p>Dojo:</p>
+        <select id="dojo" name="dojo_id">
+            {% for i in all_the_dojos %}
+            <option value="{{ i.id}}">{{ i.id}}</option>
+            {% endfor %}
+          </select><br><br>
+        <input type="submit" value="Add">
+    </form>
+    <p>--------------------------------------------------------------</p> 
+    <h1>All the Dojos</h1>  
+<ul>
+  {% for dojo in all_the_dojos %}
+    <li>{{dojo.name}}
+      <ul>
+    	<!-- looping through each author's books! -->
+        {% for ninja in dojo.dojos.all %}	
+          <li><em>{{ninja.first_name}}<span> </span>{{ninja.last_name}}</em></li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
+</body>
+</html>

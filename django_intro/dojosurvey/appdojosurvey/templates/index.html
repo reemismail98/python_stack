@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
+    <title>Document</title>
+</head>
+<body>
+    <form action='/users' method='post'>
+        {% csrf_token %}
+    Name: <input type="text" name="name">
+    <br> Dojo Location :
+      <select name = "location">
+        <option value = "Nablus" >Nablus</option>
+        <option value = "Ramallah">Ramallah</option>
+        <option value = "Jenin">Jenin</option>
+     </select>
+        <p>Favorite Language:</p>
+        <input type="radio" name="language" value="HTML">
+        <label for="male">HTML</label><br>
+        <input type="radio" name="language" value="Java">
+        <label for="female">Java</label><br>
+        <input type="radio"  name="language" value="Python">
+        <label for="other">Python</label>
+
+        <p>Contact via:</p>
+
+        <input type="checkbox"  name="Contact" value="email">
+        <label for="Contact"> Email </label><br>
+        <input type="checkbox" name="Contact" value="phone">
+        <label for="Contact"> Phone</label><br><br>
+
+    <br>
+
+    Comments: <textarea name="Comments"> </textarea>
+    <br><br>
+    <input type="submit" value="Button">
+    </form>
+
+
+</body>
+</html>

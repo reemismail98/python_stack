@@ -1,0 +1,69 @@
+Create 3 new dojos
+>>> Dojo.objects.create(name="reem", city="nablus",state="palestine")
+<Dojo: Dojo object (1)>
+>>> Dojo.objects.create(name="jan", city="new york",state="USA")
+<Dojo: Dojo object (2)>
+>>> Dojo.objects.create(name="abc", city="chicago",state="USA")
+<Dojo: Dojo object (3)>
+
+Delete the 3 dojos you just created
+>>> c=Dojo.objects.all()
+>>> c.delete()
+(3, {'dojoninjaapp.Ninja': 0, 'dojoninjaapp.Dojo': 3})
+
+Create 3 more dojos
+>>> Dojo.objects.create(name="ali", city="nablus",state="palestine")
+<Dojo: Dojo object (4)>
+>>> Dojo.objects.create(name="jan", city="new york",state="USA")
+<Dojo: Dojo object (5)>
+>>> Dojo.objects.create(name="ahmed", city="chicago",state="USA")
+<Dojo: Dojo object (6)>
+
+Create 3 ninjas that belong to the first dojo
+n=Ninja.objects.create(dojo=Dojo.objects.get(id=4),first_name="mohammed",last_name="ismail")
+
+Create 3 ninjas that belong to the second dojo
+n=Ninja.objects.create(dojo=Dojo.objects.get(id=5),first_name="arwa",last_name="esam")
+
+Create 3 ninjas that belong to the third dojo
+n=Ninja.objects.create(dojo=Dojo.objects.get(id=6),first_name="saeed",last_name="saa")
+
+Retrieve all the ninjas from the first dojo
+>>> Ninja.objects.get(dojo_id=4).__dict__
+{'_state': <django.db.models.base.ModelState object at 0x0000023F68936A30>, 'id': 1, 'dojo_id': 4, 'first_name': 'mohammed', 'last_name': 'ismail'}
+
+Retrieve all the ninjas from the last dojo
+>>> Ninja.objects.get(dojo_id=6).__dict__
+{'_state': <django.db.models.base.ModelState object at 0x0000023F689BD280>, 'id': 3, 'dojo_id': 6, 'first_name': 'saeed', 'last_name': 'saa'}
+
+Retrieve the last ninja's dojo
+>>> Ninja.objects.filter(dojo=Dojo.objects.last())
+<QuerySet []>
+
+Add a new text field called "desc" to your Dojo class
+desc=models.CharField()
+
+Create and run the migration files to update the table in your database. If needed, provide a default value of "old dojo"
+django_intro\DojoandNinja>python manage.py makemigrations
+You are trying to add a non-nullable field 'desc' to dojo without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> "old dojo"
+Migrations for 'dojoninjaapp':
+  dojoninjaapp\migrations\0002_dojo_desc.py
+    - Add field desc to dojo
+
+(djangoPy3Env) C:\Users\Dema\OneDrive\Desktop\programming\Python\Django\my_environments\django_intro\DojoandNinja>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, dojoninjaapp, sessions
+Running migrations:
+  Applying dojoninjaapp.0002_dojo_desc... OK
+
+Create a new dojo
+>>> Dojo.objects.create(name="demma", city="ramallah",state="palestine",desc="new dojo")
+<Dojo: Dojo object (7)>

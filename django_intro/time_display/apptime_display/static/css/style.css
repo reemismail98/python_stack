@@ -1,0 +1,11 @@
+#header{
+    width:300px
+}
+div{
+    border: 1px solid black;
+    text-align: center;
+    margin: auto;
+}
+#time{
+    width: 150px;
+}

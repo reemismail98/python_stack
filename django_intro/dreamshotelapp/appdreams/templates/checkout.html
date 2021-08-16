@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Customer Payment Details</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cards.css' %}">
+    <script src="{% static 'js/script.js' %}"></script>
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+        <img class="w3-bar-item w3-logo w3-mobile"  src="{% static 'img/Capture.png' %}"  alt="logo"  width="100" height="60">
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a class="navlist" href="/">Home</a></li>
+            <li><a class="navlist" href="#">Facilities</a></li>
+            <li><a class="navlist" href="#">Spical Offers</a></li>
+          </ul>
+            <p class="text center" id="titlename">Dreams Hotel</p>
+        </div>
+      </nav>
+    
+    <div class="container-fluid">
+      
+        
+        <div class="creditCardForm">
+            {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <div class="heading">
+                <h1>Confirm Your Booking</h1>
+            </div>
+            <div>
+            <img src="{% static 'img/cards/th.jpg' %}" id="confimg" alt="room">
+            </div>
+
+            <div class="payment">
+                <form action="/check" method="POST">
+                    {% csrf_token %}
+                    <div>
+                        <label >First Name</label>
+                        <input type="text" name="first_name" id="" class="customerInfo" required><br>
+                    </div>
+                    <div>
+                        <label >Last Name</label>
+                        <input type="text" name="last_name" id="" class="customerInfo" required><br>
+                    </div>
+                    <div>
+                        <label for="">Email</label>
+                        <input type="email" name="email" id="" class="customerInfo" required><br>
+                    </div>
+                    <div>
+                        <label for="">Mobile Number</label>
+                        <input type="text" name="mobile" id="" class="customerInfo" required><br>
+                    </div>
+                    
+                    <div>
+                        <hr><br>
+                    <div class="heading">
+                        <h1>Credit Card Details</h1><br><br>
+                    </div>
+                    <div class="form-group owner">
+                        <label for="owner">Owner</label>
+                        <input type="text" class="form-control" id="owner">
+                    </div>
+                    
+
+                    
+                                <div class="form-group CVV">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" class="form-control" id="cvv">
+                                </div>
+                                <div class="form-group" id="card-number-field">
+                                    <label for="cardNumber">Card Number</label>
+                                    <input type="text" class="form-control" id="cardNumber">
+                                </div>
+                             
+                                
+                      
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                <script src="static/js/jquery.payform.min.js" charset="utf-8"></script>
+                <script src="static/js/script.js"></script>
+
+
+
+
+                    <div class="form-group" id="expiration-date">
+                        <label>Expiration Date</label>
+                        <select>
+                            <option value="01">January</option>
+                            <option value="02">February </option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <select>
+                            <option value="21"> 2021</option>
+                            <option value="21"> 2022</option>
+                            <option value="21"> 2023</option>
+                            <option value="24"> 2024</option>
+                            <option value="25"> 2025</option>
+                            <option value="26"> 2026</option>
+                            <option value="27"> 2027</option>
+                            <option value="28"> 2028</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="credit_cards">
+                        <img src="{% static 'img/cards/visa.jpg' %}" id="visa" alt="visa">
+                        <img src="{% static 'img/cards/mastercard.jpg' %}" id="mastercard" alt="mastercard">
+                        <img src="{% static 'img/cards/amex.jpg' %}" id="amex" alt="amex">
+                    </div>
+                    <div class="form-group" id="pay-now">
+                        <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="w3-padding-32 w3-black w3-center w3-margin-top">
+        <h5>Find Us On</h5>
+        <div class="w3-xlarge w3-padding-16">
+          <i class="fa fa-facebook-official w3-hover-opacity"></i>
+          <i class="fa fa-instagram w3-hover-opacity"></i>
+          <i class="fa fa-snapchat w3-hover-opacity"></i>
+          <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+          <i class="fa fa-twitter w3-hover-opacity"></i>
+          <i class="fa fa-linkedin w3-hover-opacity"></i>
+        </div>
+        <i class="fa fa-phone w3-text-red" style="width:30px"></i> Phone: +00 151515<br>
+      <p> <a href="#">Terms of use</a> | <a href="#">Privcy</a> |  <a href="#">Site Map</a></p>
+        <p>@ Copyright 2021</p>
+      </footer>
+</body>
+
+</html>

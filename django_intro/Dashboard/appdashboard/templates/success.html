@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thought Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+</head>
+<body>
+    <header>
+        <h1>Hi {{request.session.firstname}}!</h1>
+        <div id="welcome">
+        <a href="/logout">Log off</a></div>
+        <form action="/postthethought" method="post">
+            {% csrf_token %}
+            <div id="addthought">
+            <textarea class="textarea" rows = "5" cols = "120" name = "thought" placeholder="Post a Great Thought Here!" required></textarea> 
+        <!-- <input type="hidden" value="{{Users.user_id}}" name="user_id"> -->
+        <input type="submit" value="Add Thought" id="post_a_thought"></div><br><hr>
+    </form>
+        </header>
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div>
+            {% for thought in all_the_thought %}
+                <div>
+                    {{thought.user_uploaded.firstname}} {{thought.user_uploaded.lastname}} :
+                    <textarea class="textarea" rows = "3" cols = "100" name = "thought_old" >
+                        {{thought.textthought}}
+                    </textarea> <br>
+                    <a id="details" href="/thoughts/{{thought.id}}">Details</a><br><br>
+                    {% if request.session.id == thought.user_uploaded.id %}
+                    <form action="/deletethought" method="post">
+                        {% csrf_token %}
+                       
+                        <input type="hidden" value={{thought.id}} name="del_id">
+                    <input type="submit" value="Delete a comment" id="delete_a_comment"><br><br>
+                </form>
+                {% endif %}
+                <br>
+                </div>  
+                {% endfor %}
+            </div>
+</body>
+</html>

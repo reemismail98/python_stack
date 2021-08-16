@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <h1>Edit Show {{this_edit1.id}}</h1>
+    <a href="/shows">Go Back</a><br><br>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="/shows/{{this_edit1.id}}/update" method="POST">
+        {%csrf_token%}
+        Title <input type="text" name="title" id="title" value="{{this_edit1.title}}" required><br><br>
+        Network <input type="text" name="network" id="network" value="{{this_edit1.network}}" required>
+        Release Date <input type="date" name="release_date" id="release_date" value="{{date}}" required><br><br>
+        Description: <input type="text" name="description" id="description" value="{{this_edit1.description}}" ><br><br>
+        <input type="submit" value="Update" ><br><br>
+        <a href="/shows/{{this_edit1.id}}" >Go to Show</a>
+    </form>
+</body>
+</html>

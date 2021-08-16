@@ -1,0 +1,32 @@
+1-
+>>> Users.objects.create(first_name="reem",last_name="ismail",email="reem@gmail.com",ade=22)
+<Users: Users object (1)>
+
+>>> Users.objects.create(first_name="rawan",last_name="ismail",email="rawan@gmail.com",ade=42)
+<Users: Users object (2)>
+
+>>> Users.objects.create(first_name="ali",last_name="ali",email="ali@gmail.com",ade=12)
+<Users: Users object (3)>
+2-
+>>> Users.objects.all().values()
+<QuerySet [{'id': 1, 'first_name': 'reem', 'last_name': 'ismail', 'email': 'reem@gmail.com', 'ade': 22, 'created_at': datetime.datetime(2021, 5, 20, 20, 56, 5, 830726, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 20, 20, 56, 5, 830726, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'ali', 'last_name': 'ali', 'email': 'ali@gmail.com', 'ade': 12, 'created_at': datetime.datetime(2021, 5, 20, 20, 59, 12, 269260, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 20, 21, 34, 27, 133765, tzinfo=<UTC>)}]>
+3-
+>>> Users.objects.last().__dict__
+{'_state': <django.db.models.base.ModelState object at 0x000001A7FE707160>, 'id': 3, 'first_name': 'ali', 'last_name': 'ali', 'email': 'ali@gmail.com', 'ade': 12, 'created_at': datetime.datetime(2021, 5, 20, 20, 59, 12, 269260, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 20, 20, 59, 12, 269260, tzinfo=<UTC>)}
+4-
+>>> Users.objects.get(id=1).__dict__
+{'_state': <django.db.models.base.ModelState object at 0x000001A7FE707850>, 'id': 1, 'first_name': 'reem', 'last_name': 'ismail', 'email': 'reem@gmail.com', 'ade': 22, 'created_at': datetime.datetime(2021, 5, 20, 20, 56, 5, 830726, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 20, 20, 56, 5, 830726, tzinfo=<UTC>)}
+5-
+>>> c=Users.objects.get(id=3)
+>>> c.last_name="Pancakes"
+>>> c.save()
+6-
+>>> c=Users.objects.get(id=2)
+>>> c.delete()
+(1, {'userapp.Users': 1})
+7-
+Users.objects.all().order_by("first_name")
+<QuerySet [<Users: Users object (3)>, <Users: Users object (1)>]>
+8-
+>>> Users.objects.all().order_by("-first_name")
+<QuerySet [<Users: Users object (1)>, <Users: Users object (3)>]>

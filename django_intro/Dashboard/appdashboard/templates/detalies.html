@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thought Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+</head>
+<body>
+    <div id="linkes">
+    <a href="/thoughts">Dashboard</a>
+    <a href="/logout">Logout</a></div>
+        <div><br><br><br><br>
+ 
+                   {{this_thought.user_uploaded.firstname}} {{this_thought.user_uploaded.lastname}} 
+                    <textarea class="textarea" rows = "3" cols = "100" name = "thoughtadded" >
+                        {{this_thought.textthought}}
+                    </textarea> 
+                    <div id="likeunlike">
+                    <form action="/thoughts/addliked/{{this_thought.id}}" method="post">
+                        {% csrf_token %}
+                        
+                    <input type="submit" value="Like" name="like" id="like">
+                </form>
+                <form action="/thoughts/removeliked/{{this_thought.id}}" method="post">
+                    {% csrf_token %}
+                    
+                <input type="submit" value="Unlike" name="unlike" id="unlike"><br><br>
+            </form></div>
+                 
+
+                <p>Pepole who Liked this thought</p>
+                <table>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                    </tr>
+                    
+                    {% for thought in this_thought.user_liked.all %}
+
+                    <tr>
+                     <td>
+                         {{thought.firstname}}
+                     </td>
+                     <td>{{thought.lastname}}</td>
+                    </tr>
+                    {% endfor%}
+                </table>
+                </div> 
+            </form>
+ 
+     
+</body>
+</html>

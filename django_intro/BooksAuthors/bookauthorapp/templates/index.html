@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books/Authors With Templates</title>
+    <style>
+      th, td {
+    border: 1px solid black;
+    }
+    body{display:flex;
+    }
+    table{margin-left: 100px;}
+    </style>
+</head>
+<body>  
+    <form action="/bookadd" method="post">
+        {% csrf_token %}
+        <h1>Add a Book</h1>
+        <p>Title:</p>
+        <input type="text" name="title"><br>
+        <p>Description:</p>
+        <input type="text"  name="desc"><br><br>
+        <input type="submit" value="Add">
+    </form>   
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Action</th>
+        </tr>
+    {% for book in all_the_books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td><a href="/books/{{ book.id }}">View</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+    <!-- <form action="/{{ book.id }}" method="post">
+        {% csrf_token %}
+
+    {% for author in all_the_authors %}
+    
+           <h2>{{ author.first_name }} <span> </span>{{ author.last_name }}</h2>
+           <p>ID: {{ author.id }}</p>
+           <p>Notes: {{book.notes }}</p>
+           <ul>
+            <p>Books</p>
+            {% for book in books.publishers.all %}	
+          <li><em>{{author.first_name}}<span> </span>{{author.last_name}}</em></li>
+        {% endfor %}   
+         </ul>
+         <select id="book" name="bookid">
+            {% for i in all_the_books %}
+            <option value="{{ i.id}}">{{ i.id}}</option>
+            {% endfor %}
+          </select><br><br>
+        <input type="submit" value="Add">
+    {% endfor%}    
+    </form>
+ -->
+
+    <!-- <form action="/{{ author.id }}" method="post">
+        {% csrf_token %}
+
+    {% for book in all_the_books %}
+           <h2>{{ book.title }}</h2>
+           <p>ID: {{ book.id }}</p>
+           <p>Description: {{book.desc }}</p>
+           <ul>
+            <p>Authors</p>
+            {% for author in books.publishers.all %}	
+          <li><em>{{author.first_name}}<span> </span>{{author.last_name}}</em></li>
+        {% endfor %}   
+         </ul>
+         <select id="author" name="authorid">
+            {% for i in all_the_authors %}
+            <option value="{{ i.id}}">{{ i.id}}</option>
+            {% endfor %}
+          </select><br><br>
+        <input type="submit" value="Add">
+    {% endfor%}    
+    </form> -->
+    
+</body>
+</html>

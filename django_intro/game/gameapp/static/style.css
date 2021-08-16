@@ -1,0 +1,38 @@
+.farm{
+    display: inline-block;
+    border: 2px solid black;
+    width: 200px;
+    height: 200px;
+    padding-left: 20px;
+}
+.cave{
+    display: inline-block;
+    border: 2px solid black;
+    width: 200px;
+    height: 200px;
+    padding-left: 20px;
+}
+.house{
+    display: inline-block;
+    border: 2px solid black;
+    width: 200px;
+    height: 200px;
+    padding-left: 20px;
+}
+.casino{
+    display: inline-block;
+    border: 2px solid black;
+    width: 200px;
+    height: 200px;
+    padding-left: 20px;
+}
+.bigbox{
+    display: flex;
+    justify-content: space-around;
+}
+#green{
+    color: green;
+}
+#red{
+    color:red
+}

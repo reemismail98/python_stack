@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Show</title>
+</head>
+
+<body>
+    <h1>TV Show {{this_show1.id}}</h1>
+    <a href="/shows" id="goback">Go Back</a><br><br>
+    Title  : {{this_show1.title}} <br>
+    Network  : {{this_show1.network}} <br>    
+    Release Date    : {{this_show1.release_date}} <br>  
+    Description  : {{this_show1.description}} <br> <br> <br>   
+
+    Last Updated {{this_show1.updated_at}} <br><br>
+
+    <a href="/shows/{{this_show1.id}}/edit">Edit</a> | <a href="/shows/{{this_show1.id}}/destroy">Delete</a>
+</body>
+</html>

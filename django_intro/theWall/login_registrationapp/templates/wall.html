@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <title>Post a message</title>
+    
+</head>
+    <body>
+    <header>
+    <h1>CodingDojo Wall</h1>
+    <div id="welcome">
+    <p>Welcome {{request.session.firstname}}</p>
+    <a href="/logout">Log off</a></div>
+    </header> 
+    <div id="poatmessage">
+        <form action="/postthemessage" method="post">
+            {% csrf_token %}
+            {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <h3>Post a message</h3><br>
+            <textarea rows = "5" cols = "150" name = "message">
+        </textarea> <br>
+        <!-- <input type="hidden" value="{{Users.user_id}}" name="user_id"> -->
+        <input type="submit" value="Post a message" id="post_a_message"><br><br><br><br>
+    </form>
+        <div>
+            {% for msg in all_the_messages reversed %}
+                <div>
+                    {{msg.user_id.firstname}} {{msg.user_id.lastname}} - {{msg.updated_at}}
+                    <p>{{msg.message}}</p><br>
+                    <div class="user_comments">
+                        {% for comment in all_the_comments %} 
+                        {% if comment.message_id == msg.id %}
+                            {{comment.user_id.first_name}} {{comment.user_id.last_name}} - {{comment.updated_at}}
+                            <p>{{comment.comment}}</p>
+                        {% endfor %}
+                        {% endif %}
+                        <form action="/wall" method="post">
+                            {% csrf_token %}
+                            <h3>Post a comment</h3><br>
+                            <textarea rows = "4" cols = "130" name = "comment">
+                        </textarea> <br>
+                        <!-- <input type="hidden" value="{{Users.user_id}}" name="user_id"> -->
+                        <input type="submit" value="Post a comment" id="post_a_comment"><br><br><br><br>
+                    </form>
+                    </div>
+                </div>  
+                {% endfor %}
+            </div>
+        
+    </div>
+    </body>
+    </html>

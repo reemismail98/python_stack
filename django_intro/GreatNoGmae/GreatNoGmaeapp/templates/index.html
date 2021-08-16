@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Number Game</title>
+</head>
+<body>
+    <h2>Welcome to the great Number Game!</h2>
+    <h3>I am thinking of a number between 1 and 100</h3>
+    <h3>Take a guess!</h3>
+    <h2
+        {% if request.session.text == 'Too Low' %}
+            style="background-color: red; width: 200px; height: 100px; text-align: center; padding-top: 50px;"
+        {% endif %}
+        {% if request.session.text == 'Too High' %}
+            style="background-color: red; width: 200px; height: 100px; text-align: center; padding-top: 50px;"
+        {% endif %}
+        {% if request.session.text == 'Correct' %}
+            style="background-color: green; width: 200px; height: 100px; text-align: center; padding-top: 50px;"
+        {% endif %}
+    >{{request.session.text}}</h2>
+    <br>
+    <form action="/" method="post">
+        {% csrf_token %}
+        <input type="text" name="no"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

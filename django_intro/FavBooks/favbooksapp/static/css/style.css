@@ -1,0 +1,26 @@
+header{
+    border-bottom: 1px solid black;   
+    height: 100px;
+    }
+   
+    #welcome{
+        float: left;
+        font-size: 20px;
+    }
+    #logout{
+        float: right;
+    }
+
+#login, #reg{
+    float:left;
+    margin-right: 100px;   
+    }
+  section{
+      float: flex;
+  }
+
+  #titlebook{
+      border: 1px solid black;
+      height: 50px;
+      width: 200px;
+  }

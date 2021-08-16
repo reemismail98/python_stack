@@ -1,0 +1,132 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Rooms</title>
+      {% load static %}
+  <link rel="stylesheet" href="{% static 'css/room.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+      <!-- <nav class="w3-sidebar w3-light-grey w3-collapse w3-top" style="z-index:3;width:260px" id="mySidebar">
+          <div class="w3-container w3-display-container w3-padding-16">
+            <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-transparent w3-display-topright"></i>
+            <h3>Rooms</h3>
+            <h3>from $99</h3>
+            <h6>per night</h6>
+            <hr>
+            <form action="/action_page.php" target="_blank">
+              <p><label><i class="fa fa-calendar-check-o"></i> Check In</label></p>
+              <p>4/06/2021</p>
+              <p><label><i class="fa fa-calendar-o"></i> Check Out</label></p>
+              <p>10/06/2021</p>
+              <p><label><i class="fa fa-male"></i> Adults</label></p>
+              <p>mumber</p>        
+              </form>
+          </div>
+        </nav> -->
+
+<div id="card"> 
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+    <img class="w3-bar-item w3-logo w3-mobile"  src="{% static 'img/Capture.png' %}"  alt="logo"  width="100" height="60">
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a class="navlist" href="/">Home</a></li>
+        <li><a class="navlist" href="#">Facilities</a></li>
+        <li><a class="navlist" href="#">Spical Offers</a></li>
+      </ul>
+        <p class="text center" id="titlename">Dreams Hotel</p>
+    </div>
+  </nav>
+
+
+
+        <div id="wrapper">
+          <div id="sidebar-wrapper">
+                  <h3>Your Stay</h3>
+                  <form action="/action_page.php">
+                    <p><label><i class="fa fa-calendar-check-o"></i> Check In</label><span style="margin: 2%;">  </span><label><i class="fa fa-calendar-o"></i> Check Out</label></p>
+                    <p>4/06/2021 <span style="margin: 5%;">  </span>10/06/2021 <span style="margin-left: 8%;">  </span># nights</p>
+                    <p><label><i class="fa fa-male"></i> Adults</label></p>
+                    <p>number</p>         
+                    </form><br>
+                    <form action="/cards" method="POST">
+                      {% csrf_token %}
+                      <p><label>Room Type </label></p>
+                      <p>room one </p>
+                      <p><label>Total Price:</label></p>
+                      <input type="submit" value="Book" name="bookroom" class="btn btn-primary">
+                      </form>
+          </div>
+      </div>
+      
+      
+    
+          
+              <div class="row bg-faded" style="display:inline"  style="width: 100%;">
+                    <div class="card" style="width:60%;height: 20%; display: flex;">
+            <img src="{% static 'img/sin.jpg' %}" class="card-img-top" alt="room" style="width:70%;">
+            <div class="card-body">
+              <h3 class="card-title">Single Room</h3>
+              <p class="card-text"> Single bed</p><p class="card-text">15m<sup>2</sup></p><p class="card-text"> Price $99 / <span id="price">per night</p>
+              <a href="/chooseroom" class="btn btn-primary">Choose Room</a>
+            </div>
+          </div><br><hr>
+                  <div class="card" style="width: 60%;display: flex;">
+            <img src="{% static 'img/del.jpg' %}" class="card-img-top" alt="room" style="width:70%">
+            <div class="card-body">
+              <h3 class="card-title">Delux Double Room</h3>
+              <p class="card-text">Double King-size bed</p><p class="card-text">40m<sup>2</sup></p><p class="card-text"> Price $300 / <span id="price">per night</p>
+              <a href="/chooseroom" class="btn btn-primary">Choose Room</a>
+            </div>
+          </div>
+          
+          <br><hr>
+                  <div class="card" style="width: 60%;display: flex;">
+            <img src="{% static 'img/room2.jpg' %}" class="card-img-top" alt="room" style="width:70%">
+            <div class="card-body">
+              <h3 class="card-title">Double Room</h3>
+              <p class="card-text">Queen-size bed</p><p class="card-text">25m<sup>2</sup></p><p class="card-text"> Price $180 / <span id="price">per night</p>
+              <a href="/rooms" class="btn btn-primary">Choose Room</a>
+            </div>
+          </div><br><hr>
+          <div class="card" style="width: 60%;display: flex;">
+            <img src="{% static 'img/Room_LuxuryTwin_1.jpg' %}" class="card-img-top" alt="room" style="width:70%">
+            <div class="card-body">
+              <h3 class="card-title">Double Room</h3>
+              <p class="card-text">Two Single bed</p><p class="card-text">30m<sup>2</sup></p><p class="card-text"> Price $200 / <span id="price">per night</p>
+              <a href="/rooms" class="btn btn-primary">Choose Room</a>
+            </div>
+          </div>
+              </div>
+
+</div>   
+<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
+  <h5>Find Us On</h5>
+  <div class="w3-xlarge w3-padding-16">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <i class="fa fa-phone w3-text-red" style="width:30px"></i> Phone: +00 151515<br>
+<p> <a href="#">Terms of use</a> | <a href="#">Privcy</a> |  <a href="#">Site Map</a></p>
+  <p>@ Copyright 2021</p>
+</footer>
+  </body>
+  </html>
